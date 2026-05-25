@@ -1,1 +1,571 @@
-
+{
+  "name": "AI Core Generator Etsy",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c3994b03-a148-42c4-ba1b-cfc4f4cdea4f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n \"brand\":\"CriarUmDesign\",\n \"product\":\"Modern Dental Branding\",\n \"platform\":\"etsy\",\n \"language\":\"English\",\n \"market\":\"USA\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        0
+      ],
+      "id": "ee2f2385-0f57-40c2-abeb-9d3fb89dce96",
+      "name": "Set Inputs"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=core-brand-context"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        0
+      ],
+      "id": "7cc3c621-3f80-4b74-b83a-8b63e21ac400",
+      "name": "Get Core Brand Context",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=core-output-rules"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        624,
+        0
+      ],
+      "id": "550fcb00-f10e-4f9e-a8ac-46ccb50d351a",
+      "name": "Get Core Output Rules",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=etsy-prompt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        784,
+        0
+      ],
+      "id": "781aba89-30c5-4847-a220-a23c8450d526",
+      "name": "Get Etsy Prompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "={{ $('Set Inputs').item.json.product.toLowerCase().replace(/ /g, '-') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        944,
+        0
+      ],
+      "id": "102ec074-a9e7-45fe-b364-9501d22c12cf",
+      "name": "Get Product Prompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Txn0MvFsiFXoVAp71zT9cM7sOa6_29biaFMo87S5kaI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Txn0MvFsiFXoVAp71zT9cM7sOa6_29biaFMo87S5kaI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Product",
+              "lookupValue": "={{ $('Set Inputs').item.json.product }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        256,
+        0
+      ],
+      "id": "499c790a-f0a9-456f-8dd9-949c4dda5c78",
+      "name": "Get Brand Profile",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const coreContext = $items(\"Get Core Brand Context\")[0].json.Content;\n\nconst outputRules = $items(\"Get Core Output Rules\")[0].json.Content;\n\nconst platformPrompt = $items(\"Get Etsy Prompt\")[0].json.Content;\n\nconst productPrompt = $items(\"Get Product Prompt\")[0].json.Content;\n\nconst brand = $items(\"Get Brand Profile\")[0].json;\n\nconst finalPrompt = `\n${coreContext}\n\n${outputRules}\n\n${platformPrompt}\n\n${productPrompt}\n\nBrand: ${brand.Brand}\nProduct: ${brand.Product}\nNiche: ${brand.Niche}\nAudience: ${brand.Audience}\nStyle: ${brand.Style}\nColors: ${brand.Colors}\nTone: ${brand.Tone}\nLanguage: ${brand.Language}\nMarket: ${brand.Market}\nGoal: ${brand.Goal}\n\nGenerate a high-converting Etsy listing.\n\nReturn ONLY valid JSON using this structure:\n\n{\n  \"etsy_title\":\"\",\n  \"short_description\":\"\",\n  \"full_description\":\"\",\n  \"seo_keywords\":[],\n  \"tags\":[],\n  \"target_audience\":\"\",\n  \"benefits\":[],\n  \"mockup_ideas\":[],\n  \"faq\":[],\n  \"cta\":\"\"\n}\n`;\nreturn [\n  {\n    json: {\n      prompt: finalPrompt\n    },\n    pairedItem: { item: 0 }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        0
+      ],
+      "id": "a550ed11-98f2-4fa1-a5f3-a85d77f2a4cb",
+      "name": "Build Final Prompt"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "={{ $json.prompt }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        1312,
+        0
+      ],
+      "id": "bad5bd95-c782-4bd5-a2e0-2edb990ef000",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "4NJOCClvRzht8DuC",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.output[0].content[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1664,
+        0
+      ],
+      "id": "10ee63fb-c1a6-43af-b05d-08230fc6ca49",
+      "name": "Extract AI Response"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $json;\n\nreturn [\n  {\n    json: {\n      etsy_title: data.etsy_title || '',\n      short_description: data.short_description || '',\n      full_description: data.full_description || '',\n      seo_keywords: Array.isArray(data.seo_keywords) ? data.seo_keywords.join(', ') : data.seo_keywords || '',\n      tags: Array.isArray(data.tags) ? data.tags.join(', ') : data.tags || '',\n      target_audience: data.target_audience || '',\n      benefits: Array.isArray(data.benefits) ? data.benefits.join('\\n') : data.benefits || '',\n      mockup_ideas: Array.isArray(data.mockup_ideas) ? data.mockup_ideas.join('\\n') : data.mockup_ideas || '',\n      faq: Array.isArray(data.faq) ? JSON.stringify(data.faq) : data.faq || '',\n      cta: data.cta || ''\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1872,
+        0
+      ],
+      "id": "df914419-5a95-4b35-9c0e-83c65a55fe66",
+      "name": "Parse Etsy JSON"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/178AfcqjrufE5Ou8zAbSttSDeIvFMoJJnwfT7_EXt0oU/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/178AfcqjrufE5Ou8zAbSttSDeIvFMoJJnwfT7_EXt0oU/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "etsy_title": "={{ $json.etsy_title }}",
+            "short_description": "={{ $json.short_description }}",
+            "full_description": "={{ $json.full_description }}",
+            "seo_keywords": "={{ $json.seo_keywords }}",
+            "tags": "={{ $json.tags }}",
+            "target_audience": "={{ $json.target_audience}}",
+            "benefits": "={{ $json.benefits }}",
+            "mockup_ideas": "={{ $json.mockup_ideas }}",
+            "faq": "={{ $json.faq }}",
+            "cta": "={{ $json.cta }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "etsy_title",
+              "displayName": "etsy_title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "short_description",
+              "displayName": "short_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "full_description",
+              "displayName": "full_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "seo_keywords",
+              "displayName": "seo_keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tags",
+              "displayName": "tags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "target_audience",
+              "displayName": "target_audience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "benefits",
+              "displayName": "benefits",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "mockup_ideas",
+              "displayName": "mockup_ideas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "faq",
+              "displayName": "faq",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cta",
+              "displayName": "cta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2080,
+        0
+      ],
+      "id": "0de234e3-d74d-4863-94a1-ece8a5ac2fe3",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Set Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Inputs": {
+      "main": [
+        [
+          {
+            "node": "Get Brand Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Brand Profile": {
+      "main": [
+        [
+          {
+            "node": "Get Core Brand Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Core Brand Context": {
+      "main": [
+        [
+          {
+            "node": "Get Core Output Rules",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Core Output Rules": {
+      "main": [
+        [
+          {
+            "node": "Get Etsy Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Etsy Prompt": {
+      "main": [
+        [
+          {
+            "node": "Get Product Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Product Prompt": {
+      "main": [
+        [
+          {
+            "node": "Build Final Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Final Prompt": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract AI Response": {
+      "main": [
+        [
+          {
+            "node": "Parse Etsy JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Etsy JSON": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "a32f1f9f-d6a5-4b36-9a11-77b143453b3f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "873ef499a08f36ace50ecf9c4c7ee771d03017804ebdec089eb0085055ed4472"
+  },
+  "id": "bozk0BSOzF76nwoB",
+  "tags": []
+}
