@@ -1,7 +1,7 @@
 # Instagram Prompt
 
 ## Objective
-Generate high CTR Pinterest pins for Etsy digital products.
+Generate high CTR Pinterest pins for Instagram digital products.
 
 ## Audience
 Female entrepreneurs.
