@@ -11,3 +11,7 @@ Never:
 - use cliché wording
 - overuse emojis
 - create repetitive hooks
+
+Always return valid JSON.
+Avoid repetitive wording.
+Optimize outputs for engagement, SEO and readability.
