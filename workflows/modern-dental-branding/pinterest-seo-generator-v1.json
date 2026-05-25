@@ -1,1 +1,591 @@
-
+{
+  "name": "AI Core Generator Pinterest",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "127a6793-fd9d-43f2-92d8-ee5db62cdff2",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n \"brand\":\"CriarUmDesign\",\n \"product\":\"Modern Dental Branding\",\n \"platform\":\"pinterest\",\n \"language\":\"English\",\n \"market\":\"USA\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        0
+      ],
+      "id": "fa0c736a-4db6-477a-a4fe-1fc77a481460",
+      "name": "Set Inputs"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=core-brand-context"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        0
+      ],
+      "id": "77d1a011-ead5-4421-8b9b-1ebea54db4ea",
+      "name": "Get Core Brand Context",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=core-output-rules"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        624,
+        0
+      ],
+      "id": "59c30c9b-cb7d-4353-95e7-50844f1982f2",
+      "name": "Get Core Output Rules",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "={{ $('Set Inputs').item.json.product.toLowerCase().replace(/ /g, '-') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        944,
+        0
+      ],
+      "id": "43fb7a14-c61e-4dc2-8c48-ad7e88d565b6",
+      "name": "Get Product Prompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Txn0MvFsiFXoVAp71zT9cM7sOa6_29biaFMo87S5kaI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Txn0MvFsiFXoVAp71zT9cM7sOa6_29biaFMo87S5kaI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Product",
+              "lookupValue": "={{ $('Set Inputs').item.json.product }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        256,
+        0
+      ],
+      "id": "137faabf-c35d-469a-a4f0-487db4ff919f",
+      "name": "Get Brand Profile",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const coreContext = $items(\"Get Core Brand Context\")[0].json.Content;\nconst outputRules = $items(\"Get Core Output Rules\")[0].json.Content;\nconst platformPrompt = $items(\"Get Pinterest Prompt\")[0].json.Content;\nconst productPrompt = $items(\"Get Product Prompt\")[0].json.Content;\nconst brand = $items(\"Get Brand Profile\")[0].json;\n\nconst finalPrompt = `\n${coreContext}\n\n${outputRules}\n\n${platformPrompt}\n\n${productPrompt}\n\nBrand: ${brand.Brand}\nProduct: ${brand.Product}\nNiche: ${brand.Niche}\nAudience: ${brand.Audience}\nStyle: ${brand.Style}\nColors: ${brand.Colors}\nTone: ${brand.Tone}\nLanguage: ${brand.Language}\nMarket: ${brand.Market}\nGoal: ${brand.Goal}\n\nGenerate HIGH CTR Pinterest content optimized for:\n- saves\n- clicks\n- Etsy traffic\n- emotional hooks\n- Pinterest SEO\n\nReturn ONLY valid JSON using this structure:\n\n{\n  \"pin_title\":\"\",\n  \"pin_description\":\"\",\n  \"hook\":\"\",\n  \"cta\":\"\",\n  \"seo_keywords\":[],\n  \"text_overlay\":\"\",\n  \"pin_style\":\"\",\n  \"visual_direction\":\"\",\n  \"mockup_ideas\":[],\n  \"target_emotion\":\"\",\n  \"audience\":\"\",\n  \"hashtags\":[]\n}\n`;\n\nreturn [\n  {\n    json: {\n      prompt: finalPrompt\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        0
+      ],
+      "id": "d5c51e78-0c28-4166-b9a9-6a7fb04847d7",
+      "name": "Build Final Prompt"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "={{ $json.prompt }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        1312,
+        0
+      ],
+      "id": "4e3cde15-4ba0-41f0-8e1e-9eae3b09bc1d",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "4NJOCClvRzht8DuC",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.output[0].content[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1664,
+        0
+      ],
+      "id": "928960e8-e41a-4093-837c-c5c0264e3737",
+      "name": "Extract AI Response"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1N7Ll78G6KJIgD1eKIStIWleMNWNMtdW8beb0jc5H0fs/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1N7Ll78G6KJIgD1eKIStIWleMNWNMtdW8beb0jc5H0fs/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "pin_title": "={{ $json.pin_title }}",
+            "pin_description": "={{ $json.pin_description }}",
+            "hook": "={{ $json.hook }}",
+            "cta": "={{ $json.cta }}",
+            "seo_keywords": "={{ $json.seo_keywords }}",
+            "text_overlay": "={{ $json.text_overlay }}",
+            "pin_style": "={{ $json.pin_style }}",
+            "visual_direction": "={{ $json.visual_direction }}",
+            "mockup_ideas": "={{ $json.mockup_ideas }}",
+            "target_emotion": "={{ $json.target_emotion }}",
+            "audience": "={{ $json.audience }}",
+            "hashtags": "={{ $json.hashtags }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "pin_title",
+              "displayName": "pin_title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pin_description",
+              "displayName": "pin_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hook",
+              "displayName": "hook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cta",
+              "displayName": "cta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "seo_keywords",
+              "displayName": "seo_keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "text_overlay",
+              "displayName": "text_overlay",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pin_style",
+              "displayName": "pin_style",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "visual_direction",
+              "displayName": "visual_direction",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "mockup_ideas",
+              "displayName": "mockup_ideas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "target_emotion",
+              "displayName": "target_emotion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "audience",
+              "displayName": "audience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hashtags",
+              "displayName": "hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2080,
+        0
+      ],
+      "id": "8f0b0605-c5a6-46a5-a317-2cd1e7d2cbdb",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=pinterest-prompt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        784,
+        0
+      ],
+      "id": "0f80751e-8a32-45f9-b4f8-2463ec15e7cf",
+      "name": "Get Pinterest Prompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $json;\n\nreturn [\n  {\n    json: {\n      pin_title: data.pin_title || '',\n      pin_description: data.pin_description || '',\n      hook: data.hook || '',\n      cta: data.cta || '',\n      seo_keywords: Array.isArray(data.seo_keywords)\n        ? data.seo_keywords.join(', ')\n        : data.seo_keywords || '',\n\n      text_overlay: data.text_overlay || '',\n      pin_style: data.pin_style || '',\n      visual_direction: data.visual_direction || '',\n\n      mockup_ideas: Array.isArray(data.mockup_ideas)\n        ? data.mockup_ideas.join('\\n')\n        : data.mockup_ideas || '',\n\n      target_emotion: data.target_emotion || '',\n      audience: data.audience || '',\n\n      hashtags: Array.isArray(data.hashtags)\n        ? data.hashtags.join(' ')\n        : data.hashtags || ''\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1872,
+        0
+      ],
+      "id": "8b1dfcab-246f-4208-8098-c1d249766ebf",
+      "name": "Parse Pinterest JSON"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Set Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Inputs": {
+      "main": [
+        [
+          {
+            "node": "Get Brand Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Brand Profile": {
+      "main": [
+        [
+          {
+            "node": "Get Core Brand Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Core Brand Context": {
+      "main": [
+        [
+          {
+            "node": "Get Core Output Rules",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Core Output Rules": {
+      "main": [
+        [
+          {
+            "node": "Get Pinterest Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Product Prompt": {
+      "main": [
+        [
+          {
+            "node": "Build Final Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Final Prompt": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract AI Response": {
+      "main": [
+        [
+          {
+            "node": "Parse Pinterest JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Pinterest Prompt": {
+      "main": [
+        [
+          {
+            "node": "Get Product Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Pinterest JSON": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "ff47b38f-1b7a-41be-899d-b73b75bdf7f5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "873ef499a08f36ace50ecf9c4c7ee771d03017804ebdec089eb0085055ed4472"
+  },
+  "id": "EXuz8rMDOBYSvGZ0",
+  "tags": []
+}
