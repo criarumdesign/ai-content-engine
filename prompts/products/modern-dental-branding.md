@@ -79,4 +79,3 @@ Avoid:
 * cluttered layouts
 * aggressive sales tone
 * low-quality stock image style
-
