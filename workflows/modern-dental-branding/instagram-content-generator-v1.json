@@ -1,1 +1,571 @@
-
+{
+  "name": "AI Core Generator Instagram",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "afdf46b5-671e-41e3-975a-fd207cc7dc17",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n \"brand\":\"CriarUmDesign\",\n \"product\":\"Modern Dental Branding\",\n \"platform\":\"instagram\",\n \"language\":\"English\",\n \"market\":\"USA\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        0
+      ],
+      "id": "67b4cd45-14dd-47e0-b64a-9732257d103c",
+      "name": "Set Inputs"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=core-brand-context"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        0
+      ],
+      "id": "632eb53a-3c31-4e1d-b8c8-ea01b9751d2e",
+      "name": "Get Core Brand Context",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=core-output-rules"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        624,
+        0
+      ],
+      "id": "c5d0b77f-0247-4211-adcc-a9fa0869b4f8",
+      "name": "Get Core Output Rules",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "={{ $('Set Inputs').item.json.product.toLowerCase().replace(/ /g, '-') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        944,
+        0
+      ],
+      "id": "93d9aa4a-28e9-4e18-a29a-edde7a8023cb",
+      "name": "Get Product Prompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Txn0MvFsiFXoVAp71zT9cM7sOa6_29biaFMo87S5kaI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Txn0MvFsiFXoVAp71zT9cM7sOa6_29biaFMo87S5kaI/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Product",
+              "lookupValue": "={{ $('Set Inputs').item.json.product }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        256,
+        0
+      ],
+      "id": "78a8ee0d-7020-4cfd-af0c-ebd32bcd3ef5",
+      "name": "Get Brand Profile",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const coreContext = $items(\"Get Core Brand Context\")[0].json.Content;\nconst outputRules = $items(\"Get Core Output Rules\")[0].json.Content;\nconst platformPrompt = $items(\"Get Instagram Prompt\")[0].json.Content;\nconst productPrompt = $items(\"Get Product Prompt\")[0].json.Content;\nconst brand = $items(\"Get Brand Profile\")[0].json;\n\nconst finalPrompt = `\n${coreContext}\n\n${outputRules}\n\n${platformPrompt}\n\n${productPrompt}\n\nBrand: ${brand.Brand}\nProduct: ${brand.Product}\nNiche: ${brand.Niche}\nAudience: ${brand.Audience}\nStyle: ${brand.Style}\nColors: ${brand.Colors}\nTone: ${brand.Tone}\nLanguage: ${brand.Language}\nMarket: ${brand.Market}\nGoal: ${brand.Goal}\n\nGenerate Instagram content optimized for:\n- engagement\n- saves\n- comments\n- brand trust\n- profile visits\n- Etsy traffic\n\nReturn ONLY valid JSON using this structure:\n\n{\n  \"hook\":\"\",\n  \"caption\":\"\",\n  \"cta\":\"\",\n  \"carousel_idea\":\"\",\n  \"reel_idea\":\"\",\n  \"story_idea\":\"\",\n  \"hashtags\":[],\n  \"target_emotion\":\"\",\n  \"audience\":\"\",\n  \"tone\":\"\"\n}\n`;\n\nreturn [\n  {\n    json: {\n      prompt: finalPrompt\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        0
+      ],
+      "id": "47b69323-d813-4158-a6ed-1f730dd9eb31",
+      "name": "Build Final Prompt"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "={{ $json.prompt }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        1312,
+        0
+      ],
+      "id": "ce2c8630-7987-4fcc-8183-27221491184c",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "4NJOCClvRzht8DuC",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.output[0].content[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1664,
+        0
+      ],
+      "id": "70e024ca-7b64-4b4c-ad83-b6936c1c1c62",
+      "name": "Extract AI Response"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/12UP-ChlLv0p5xzaW9oidGo1eH7Mzfep8bSqc1b2uqoA/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/12UP-ChlLv0p5xzaW9oidGo1eH7Mzfep8bSqc1b2uqoA/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "caption": "={{ $json.caption }}",
+            "hook": "={{ $json.hook }}",
+            "cta": "={{ $json.cta }}",
+            "carousel_idea": "={{ $json.carousel_idea }}",
+            "reel_idea": "={{ $json.reel_idea }}",
+            "story_idea": "={{ $json.story_idea }}",
+            "hashtags": "={{ $json.hashtags }}",
+            "target_emotion": "={{ $json.target_emotion }}",
+            "audience": "={{ $json.audience }}",
+            "tone": "={{ $json.tone }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "caption",
+              "displayName": "caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hook",
+              "displayName": "hook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cta",
+              "displayName": "cta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "carousel_idea",
+              "displayName": "carousel_idea",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reel_idea",
+              "displayName": "reel_idea",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "story_idea",
+              "displayName": "story_idea",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "hashtags",
+              "displayName": "hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "target_emotion",
+              "displayName": "target_emotion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "audience",
+              "displayName": "audience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tone",
+              "displayName": "tone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2080,
+        0
+      ],
+      "id": "29049afb-c22d-47b4-8b0c-472928ff2232",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1rgsRuXx0lJn9kc-84vgjGbdMri-9Vw-QgEt7ZsDHC90/edit?gid=0#gid=0",
+          "__regex": "https:\\/\\/docs\\.google\\.com\\/spreadsheets\\/d\\/[0-9a-zA-Z\\-_]+.*\\#gid=([0-9]+)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Prompt Name",
+              "lookupValue": "=instagram-prompt"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        784,
+        0
+      ],
+      "id": "eabbac37-b25d-4c7c-8199-81e9aa649493",
+      "name": "Get Instagram Prompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EydWIDaNguyU5GOA",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $json;\n\nreturn [\n  {\n    json: {\n      hook: data.hook || '',\n      caption: data.caption || '',\n      cta: data.cta || '',\n      carousel_idea: data.carousel_idea || '',\n      reel_idea: data.reel_idea || '',\n      story_idea: data.story_idea || '',\n      hashtags: Array.isArray(data.hashtags)\n        ? data.hashtags.join(' ')\n        : data.hashtags || '',\n      target_emotion: data.target_emotion || '',\n      audience: data.audience || '',\n      tone: data.tone || ''\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1872,
+        0
+      ],
+      "id": "e277f933-f348-45f5-ae98-a78ab85347a0",
+      "name": "Parse Instagram JSON"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Set Inputs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Inputs": {
+      "main": [
+        [
+          {
+            "node": "Get Brand Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Brand Profile": {
+      "main": [
+        [
+          {
+            "node": "Get Core Brand Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Core Brand Context": {
+      "main": [
+        [
+          {
+            "node": "Get Core Output Rules",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Core Output Rules": {
+      "main": [
+        [
+          {
+            "node": "Get Instagram Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Product Prompt": {
+      "main": [
+        [
+          {
+            "node": "Build Final Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Final Prompt": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Extract AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract AI Response": {
+      "main": [
+        [
+          {
+            "node": "Parse Instagram JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Instagram Prompt": {
+      "main": [
+        [
+          {
+            "node": "Get Product Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Instagram JSON": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "94c10241-5d4b-4145-b34a-e4eb70e9b731",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "873ef499a08f36ace50ecf9c4c7ee771d03017804ebdec089eb0085055ed4472"
+  },
+  "id": "bxqN0WMiwRPpiHHF",
+  "tags": []
+}
