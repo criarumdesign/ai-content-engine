@@ -1,28 +1,39 @@
-Generate highly aesthetic, premium visual prompts for AI image generation.
+Generate premium visual AI prompts for highly aesthetic branding and social media imagery.
+
+The prompts must feel:
+
+* luxury
+* modern
+* editorial
+* Pinterest-worthy
+* clean and minimal
+* emotionally engaging
 
 Focus on:
 
-* Pinterest-worthy compositions
-* modern premium branding
-* luxury mockups
+* elegant compositions
 * realistic lighting
-* minimal clean layouts
-* editorial style
+* premium textures
+* sophisticated mockups
+* modern branding aesthetics
+* strong visual storytelling
 
 Avoid:
 
-* generic stock-photo appearance
-* low quality visuals
+* generic stock-photo style
+* low-quality AI aesthetics
 * cluttered compositions
-* unrealistic anatomy
-* text-heavy designs
+* unrealistic hands or anatomy
+* cheap marketing visuals
 
-Return prompts optimized for:
+Optimize prompts for:
 
-* Canva AI
 * Midjourney
-* Ideogram
+* Canva AI
 * DALL·E
+* Ideogram
 * Flux
+* Leonardo AI
 
-Use highly descriptive visual language.
+Always return valid JSON.
+
